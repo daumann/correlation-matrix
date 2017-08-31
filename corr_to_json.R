@@ -1,7 +1,7 @@
 library(jsonlite)
 library(corrplot)
 
-train <- read.csv("train.csv", header = TRUE)
+train <- read.csv("/home/aumann/code/correlation/data/train.csv", header = TRUE)
 numerics <- names(train)[!sapply(train, is.factor)]
 numerics <- numerics[which(numerics != 'Id')]
 dat <- train[ ,numerics]
@@ -22,4 +22,4 @@ result <- list('ind' = toJSON(ind),
 
 y <- paste0('{', paste0('"', names(result), '": ', result, collapse = ','), '}')
 
-cat(y, file='data/cov.json')
+cat(y, file='/home/aumann/code/correlation/data/cov.json')
